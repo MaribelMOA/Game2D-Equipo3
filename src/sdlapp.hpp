@@ -72,4 +72,5 @@ class SDLApp
         static void set_bgcolor(Uint8 rojo,Uint8 verde,Uint8 azul);
         static SDLApp& get();
         static bool estaCorriendo() {return get().esta_corriendo;};
+          static void restart() ;
 };

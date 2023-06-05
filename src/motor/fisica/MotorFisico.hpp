@@ -15,6 +15,7 @@ class MotorFisico2D
         static bool diag_ovelap(Objeto& A, Objeto& B);
 
         bool diag_ovelap_g(Objeto& A, Objeto& B);
+         bool diag_ovelap_e(Objeto& A, Objeto& B);
         
         static void sat_colision(ObjetoDinamico&p, std::vector<ObjetoEstatico*> obj);
         static void sortandsweep_colision(std::vector<ObjetoDinamico*> objs);

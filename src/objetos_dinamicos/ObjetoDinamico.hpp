@@ -135,6 +135,7 @@ class  Enemigo : public ObjetoDinamico
         float velocidad;
         int en_transicion{0};
         int width, height;
+        bool start;
 
        // void checar_colisiones();
     private:

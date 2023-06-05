@@ -142,6 +142,55 @@ bool MotorFisico2D::diag_ovelap_g(Objeto &A, Objeto &B)
     return 0;
 };
 
+bool MotorFisico2D::diag_ovelap_e(Objeto &A, Objeto &B)
+{
+    Objeto* TA = &A;
+    Objeto* TB = &B;
+    for(int i=0;i<2;i++){
+        if(i==1){
+            TA = &B;
+            TB = &A;
+        }
+        std::vector<Coordenadas> vA = TA->get_colbox()->get_vertices();
+        Coordenadas Ac={(vA[0].x+vA[3].x)/2,(vA[0].y+vA[1].y)/2};
+        std::vector<Coordenadas> vB = TB->get_colbox()->get_vertices();
+        Coordenadas Bc={(vB[0].x+vB[3].x)/2,(vB[0].y+vB[1].y)/2};
+
+        //revisar loas diagonales con AABB
+        for(int n=0;n<vA.size();n++)
+        {
+            Coordenadas lineaA_inicio=Ac;
+            Coordenadas lineaA_fin=vA[n];
+            //offset es donde mueve la figura
+            Coordenadas offset={0,0};
+            for(int m=0;m<vB.size();m++)
+            {
+                Coordenadas lineaB_inicio=Bc;
+                Coordenadas lineaB_fin=vB[(m+1)%vB.size()];
+
+                //interseccion de las lineas
+                //(x4-x3)*(y1-y2)-(x1-x2)*(y4-y3)
+                float h=(lineaB_fin.x-lineaB_inicio.x)*(lineaA_inicio.y-lineaA_fin.y)-(lineaA_inicio.x-lineaA_fin.x)*(lineaB_fin.y-lineaB_inicio.y);
+                //[(y3-y4)*(x1-x3)+(x4-x3)*(y1-y3)]/[(x4-x3)*(y1-y2)-(x1-x2)*(y4-y3)]
+                float t1=((lineaB_inicio.y-lineaB_fin.y)*(lineaA_inicio.x-lineaB_inicio.x)+(lineaB_fin.x-lineaB_inicio.x)*(lineaA_inicio.y-lineaB_inicio.y))/h;
+                //saca la distancia del centro a la diagonal
+            
+                float t2=((lineaA_inicio.y-lineaA_fin.y)*(lineaA_inicio.x-lineaB_inicio.x)+(lineaA_fin.x-lineaA_inicio.x)*(lineaA_inicio.y-lineaB_inicio.y))/h;
+                //verificamos la interseccion
+                if(t1>=0.0f && t1<1.0f && t2>=0.0f && t2<1.0f)
+                {
+                    A.en_colision=true;
+                 
+                }
+
+            }
+            
+                 
+        }
+    }
+    return 0;
+};
+
 bool MotorFisico2D::diag_colision(Figura& A, Figura& B)
 {
    Figura* TA = &A;

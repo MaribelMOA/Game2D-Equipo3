@@ -71,7 +71,7 @@ FSMJugador* EstadoJugadorAttack::input_handle(Jugador& player,KeyOyente& input, 
         return new EstadoJugadorMOVER({0,-1});
     if(input.estaPresionado(SDL_SCANCODE_S))
         return new EstadoJugadorMOVER({0,1});
-    if(input.estaPresionado(SDL_SCANCODE_J) & player.get_attack_on()==true)
+    if(input.estaPresionado(SDL_SCANCODE_J) &  (player.get_attack_on()==true))
         return new EstadoJugadorAttack();
 
     return NULL;
@@ -104,7 +104,7 @@ EstadoJugadorMOVER::EstadoJugadorMOVER(Coordenadas dir)
 {
     strnombre = "MOVER";
     direccion = dir;
-    velocidad = 7;
+    velocidad = 15;
     frames_actual_ani=0;
     frames_maxim_ani=6;
 };
@@ -122,7 +122,7 @@ FSMJugador* EstadoJugadorMOVER::input_handle(Jugador& player,KeyOyente& input, M
         return new EstadoJugadorMOVERIZQ({1,1});
     if(input.estaPresionado(SDL_SCANCODE_W) & input.estaPresionado(SDL_SCANCODE_A))
         return new EstadoJugadorMOVERDER({-1,1});
-    if(input.estaPresionado(SDL_SCANCODE_J) & player.get_attack_on()==true)
+    if(input.estaPresionado(SDL_SCANCODE_J) & (player.get_attack_on()==true))
         return new EstadoJugadorAttack();
     /*
     if(input.estaPresionado(SDL_SCANCODE_D))
@@ -191,7 +191,7 @@ EstadoJugadorMOVERIZQ::EstadoJugadorMOVERIZQ(Coordenadas dir)
 {
     strnombre = "MOVER IZQ";
     direccion = dir;
-    velocidad = 7;
+    velocidad = 15;
     frames_actual_ani=0;
     frames_maxim_ani=6;
 };
@@ -207,7 +207,7 @@ FSMJugador* EstadoJugadorMOVERIZQ::input_handle(Jugador& player,KeyOyente& input
         return new EstadoJugadorMOVERIZQ({1,1});
     if(input.estaPresionado(SDL_SCANCODE_W) & input.estaPresionado(SDL_SCANCODE_A))
         return new EstadoJugadorMOVERDER({-1,1});
-    if(input.estaPresionado(SDL_SCANCODE_J) & player.get_attack_on()==true)
+    if(input.estaPresionado(SDL_SCANCODE_J) &  (player.get_attack_on()==true))
         return new EstadoJugadorAttack();
 
     //buggy
@@ -257,7 +257,7 @@ EstadoJugadorMOVERDER::EstadoJugadorMOVERDER(Coordenadas dir)
 {
     strnombre = "MOVER DER";
     direccion = dir;
-    velocidad = 7;
+    velocidad = 15;
     frames_actual_ani=0;
     frames_maxim_ani=6;
 };
@@ -273,7 +273,7 @@ FSMJugador* EstadoJugadorMOVERDER::input_handle(Jugador& player,KeyOyente& input
         return new EstadoJugadorMOVERIZQ({1,1});
     if(input.estaPresionado(SDL_SCANCODE_W) & input.estaPresionado(SDL_SCANCODE_A))
         return new EstadoJugadorMOVERDER({-1,1});
-    if(input.estaPresionado(SDL_SCANCODE_J)  & player.get_attack_on()==true)
+    if(input.estaPresionado(SDL_SCANCODE_J)  & (player.get_attack_on()==true))
         return new EstadoJugadorAttack();
 
     //buggy

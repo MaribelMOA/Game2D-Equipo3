@@ -131,7 +131,8 @@ void EstadoGuardianTransicion::on_update(Guardian &g,double dt)
     float desplazamiento_y = direccion_y * std::min(distancia, max_desplazamiento);
 
     // Actualiza la posición del enemigo
-    Coordenadas temp={g.get_posicion_mundo().x + desplazamiento_x, g.get_posicion_mundo().y + desplazamiento_y};
+   // int x=
+    Coordenadas temp={g.get_posicion_mundo().x + (int)desplazamiento_x, g.get_posicion_mundo().y + (int)desplazamiento_y};
     g.set_posicion_mundo(temp);
 
     // Verifica si se ha alcanzado la posición objetivo

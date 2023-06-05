@@ -22,7 +22,7 @@ class FSMEnemigo
          int delay;
         double init_tiempo;
         int past_tiempo;
-        bool check;
+        Coordenadas check;
         
     
     public:
@@ -80,6 +80,9 @@ class EstadoEnemigoAttack: public FSMEnemigo
         void on_entrar(Enemigo &en);
         void on_salir(Enemigo &en);
         void on_update(Enemigo &en,double dt);
+           int contador;
+        double current_tiempo;
+        double idle_tiempo;
     private:
         Coordenadas centro;
         Objeto *obj;

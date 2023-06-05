@@ -117,14 +117,14 @@ bool SDLApp::on_init()
     posGuardian = posicionesPiso[random3];
 
     //07 Generar Jugador
-    player = new Jugador("assets/sprites/heroe/myHero.png",80,4,posJugador.x,posJugador.y,135,93,100,70,{255,0,255,255});
+    player = new Jugador("assets/sprites/heroe/myHero.png",100,3,posJugador.x,posJugador.y,135,93,100,70,{255,0,255,255});
             //80,1,300,400,135,93,100,70,{255,0,255,255});
    get().ensamble->cargar_texturas(player->get_sprite());
-   player->set_hp(80);
+   player->set_plantas(10);
 
     //Generar Enemigo
    // enemigo=new Enemigo("assets/sprites/heroe/monster.png",80,1,posEnemigo.x,posEnemigo.y,100,87,100,100,{255,0,255,255},player);//80,1,300,300,100,87,100,100,{255,0,255,255}, player);
- enemigo=new Enemigo("assets/sprites/heroe/monster.png",80,1,posJugador.x+100,posJugador.y+100,100,87,100,100,{255,0,255,255});//80,1,300,300,100,87,100,100,{255,0,255,255}, player);
+ enemigo=new Enemigo("assets/sprites/heroe/monster.png",50,1,posEnemigo.x,posEnemigo.y,100,87,100,100,{255,0,255,255});//80,1,300,300,100,87,100,100,{255,0,255,255}, player);
     
   //Generar Guardian
    guardian=new Guardian("assets/sprites/heroe/buho3.png",15,1,posGuardian.x,posGuardian.y,60,50,100,100,{255,0,255,255});
@@ -156,12 +156,12 @@ bool SDLApp::on_init()
       
         if(id==PISO && rand()%100<50){
             //HAY UN 20 PORCIETNO DE PROB DE QUE HAYA UNA GEMA
-            if(rand()%100<5 && numGemas<=20){
+            if(rand()%100<5 && numGemas<=30){
                 p->set_tile(new Tile(allTiles[GEMAS-1]));
                 p->set_ID(GEMAS);
                 numGemas++;
             } 
-            if(rand()%100<5 && numPlantas<=20){
+            if(rand()%100<5 && numPlantas<=30){
                 p->set_tile(new Tile(allTiles[PLANTAS-1]));
                 p->set_ID(PLANTAS);
                 numPlantas++;
@@ -247,6 +247,7 @@ void SDLApp::on_fisicaupdate(double dt)
     {
         start = true;
         camara_principal->start = true;
+        enemigo->start = true;
         camara_principal->lock_objeto(*player);
         enemigo->lock_objeto(*player);
         guardian->lock_objeto(*player);
@@ -350,10 +351,10 @@ void SDLApp::on_fisicaupdate(double dt)
     enemigo->update(dt);
     //imprimir esaod del enemgio
     std::string estado=enemigo->get_strEstado();
-    printf("EsTADO enemigo :%s\n",estado.c_str());
+  // printf("EsTADO enemigo :%s\n",estado.c_str());
    // printf("Coordenadas enemigo: (%d,%d)\n",enemigo->get_posicion_mundo().x,enemigo->get_posicion_mundo().y);
   //  if(game_over==false){
-            MotorFisico2D::get().diag_ovelap_g(*player,*enemigo);
+            MotorFisico2D::get().diag_ovelap_e(*player,*enemigo);
         if(player->en_colision==true){
             player->set_hp(player->get_hp()-enemigo->get_ataque());
             
@@ -447,19 +448,34 @@ void SDLApp::on_frameupdate(double dt)
         if(player->get_hp()<=0 && game_over==true){
             RenderTexto::get().render_texto(get().render,400,350,"GAME OVER",150,70,SDL_Color{255,0,255,255});
             enemigo->set_muerto(true);
+            game_over=true;
+             if(game_over==true){
+            RenderTexto::get().render_texto(get().render,350,450,"PRESS L TO RESTART THE GAME",350,70,SDL_Color{255,0,255,255});
+                if(KeyOyente::get().estaPresionado(SDL_SCANCODE_L))
+                {
+                    restart();
+                }
+             }
         }
         if(player->get_colision_artefacto()==true){
             RenderTexto::get().render_texto(get().render,400,430,"YOU WIN",150,40,SDL_Color{255,0,255,255});
             enemigo->set_muerto(true);
             game_over=true;
-            //player->set_hp(0);
-          // get().esta_corriendo=false;
+             if(game_over==true){
+            RenderTexto::get().render_texto(get().render,400,350,"PRESS L TO RESTART THE GAME",350,70,SDL_Color{255,0,255,255});
+                if(KeyOyente::get().estaPresionado(SDL_SCANCODE_L))
+                {
+                    restart();
+                }
+             }
         }
    }
     
     if(start==false){
         RenderTexto::get().render_texto(get().render,400,300,"PRESS L TO START",200,90,SDL_Color{255,255,0,255});
+        
     }
+   
 
     //Actualizar
     SDL_RenderPresent(get().render);
@@ -531,6 +547,13 @@ int SDLApp::on_correr()
     //liberamos memoria
     get().on_limpiar();
     return 0;
+};
+
+void SDLApp::restart()
+{
+   // get().on_limpiar();
+    get().on_init();
+    get().on_correr();
 };
 
 

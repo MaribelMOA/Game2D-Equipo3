@@ -38,7 +38,7 @@ Jugador::Jugador(std::string path_sprite,float vida, int atk,int x, int y, int w
     en_colision = false;
     estado_actual = new EstadoJugadorIDLE();
     piso = {500,500}; // definir el piso en general
-
+    velocidad = 100;
     gemas=0;
     plantas=10;
     sprite = new Sprite(path_sprite,posicion_mundo,w,h,sw,sh);
@@ -158,10 +158,11 @@ Enemigo::Enemigo(std::string path_sprite,float vida, int atk,int x, int y, int w
     piso = {500,500}; // definir el piso en general
   
     muerto=false;
+    start=false;
     game_over = false;
 
 
-    velocidad=105.f;
+    velocidad=5.f;
 
     sprite = new Sprite(path_sprite,posicion_mundo,w,h,sw,sh);
 };
@@ -186,12 +187,13 @@ Enemigo::Enemigo(std::string path_sprite,float vida, int atk,int x, int y, int w
     objeto_seguir = jugador;
     jugador_seguir = jugador;
     muerto=false;
+    start=false;
 
     lock_objeto(*jugador);
     game_over = false;
 
 
-    velocidad=105.f;
+    velocidad=5.f;
 
     sprite = new Sprite(path_sprite,posicion_mundo,w,h,sw,sh);
 };
