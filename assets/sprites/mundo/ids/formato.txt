@@ -1,0 +1,9 @@
+.../ejemplo_atlas.png # archivo del atlas
+4 4                   # dimensiones del mundo
+72 72                 # dimensiones tile
+18 6                  # en el atlas tiles a lo largo y tiles a lo alto
+2048 768              # dimensiones del atlas_sheet
+1 1 2 1               # ids de los tiles en el mundo
+1 0 0 1
+1 0 0 1
+1 1 1 1
