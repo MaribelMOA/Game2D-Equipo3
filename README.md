@@ -17,25 +17,25 @@ Información dada por los reyes: Un dragón, especie que se creía extinta desde
 Los artefactos representan, protegen y dan vida a las características que definen a cada reino desde hace cientos de años.
 
 
-->El reino de Elvin: Reino al oeste  del continente con árboles grandes y verdes, donde los ciudadanos viven uno con la naturaleza y las ciudades se encuentran escondidas entre los árboles. Así mismo, tiene una afinidad con las plantas por las que tienen de los mejores campos agrícolas del continente.
+-># El reino de Elvin:#  Reino al oeste  del continente con árboles grandes y verdes, donde los ciudadanos viven uno con la naturaleza y las ciudades se encuentran escondidas entre los árboles. Así mismo, tiene una afinidad con las plantas por las que tienen de los mejores campos agrícolas del continente.
 Su símbolo y artefacto que los protege es el escudo de madera, ya que como la madera que protege a todo el reino, este escudo los mantiene a salvo y oculto de los monstruos. En tiempos de guerra, le da al usuario el poder de protegerse contra cualquier ataque.
 
 Consecuencias: Luego de que el escudo fue robado, los árboles que rodeaban el reino se debilitaron y comenzaron a marchitarse, dejando que más monstruos lleguen al reino. Así mismo, sus campos de siembra pararon de dar fruto.
 
 
-->El reino de Seemar: Reino este del continente, rodeado de lagos y ríos con corrientes fuertes y animales marinos de todo tipo. Principal recurso económico es la pesca.
+-># El reino de Seemar:#  Reino este del continente, rodeado de lagos y ríos con corrientes fuertes y animales marinos de todo tipo. Principal recurso económico es la pesca.
 Su símbolo y artefacto es el Water Whip/Latigo de agua, rápido y peligroso como los lagos y ríos que protegen a dicho reino. Quien lo use, obtiene la habilidad de que sus movimientos sean más rápidos.
 
 Consecuencias: Los ríos comenzaron a secarse y se están quedando sin sus bordes naturales y su principal recurso económico.
  
  
  
-->El reino de HailFrost: Reino al norte del continente que siempre se encuentra nevado y lleno de icebergs. Pero a pesar de estas condiciones, es considerado el reino más seguro de los tres reinos con los mejores soldados y mejor elaboración de armas y avances tecnológicos.
+-># El reino de HailFrost:#  Reino al norte del continente que siempre se encuentra nevado y lleno de icebergs. Pero a pesar de estas condiciones, es considerado el reino más seguro de los tres reinos con los mejores soldados y mejor elaboración de armas y avances tecnológicos.
 Su símbolo y artefacto es la espada de hielo, quién protege a su reino cubriéndolo de paredes de hielos inquebrantables y filosos. Quien usa esta espada obtiene la habilidad de cortar cualquier cosa.
 
 Consecuencias: El hielo se ha comenzado a derretir y los lugares se han empezado a inundar.
 
 
-->Bosque oscuro: Al sur del continente, la región lleno de monstruos de la que se conoce poco. Casi ningún arma sirve contra los monstruos de este bosque, hasta ahora, la única forma de debilitar a un monstruo es con la hierba “Shigmul”.
+-># Bosque oscuro:#  Al sur del continente, la región lleno de monstruos de la que se conoce poco. Casi ningún arma sirve contra los monstruos de este bosque, hasta ahora, la única forma de debilitar a un monstruo es con la hierba “Shigmul”.
 
 Consecuencia: Los monstruos comienzan a infiltrar el resto de los reinos debido a que todos los poderes de los artefactos se encuentran en su hogar.
