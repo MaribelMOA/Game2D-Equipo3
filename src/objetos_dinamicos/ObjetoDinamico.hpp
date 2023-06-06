@@ -25,6 +25,7 @@ class ObjetoDinamico : public Objeto
         virtual void* get_estado()=0;
 
         Coordenadas offsetoverlap;
+          bool start;
     protected:
         float dtgravedad{0};
         
@@ -135,7 +136,7 @@ class  Enemigo : public ObjetoDinamico
         float velocidad;
         int en_transicion{0};
         int width, height;
-        bool start;
+      
 
        // void checar_colisiones();
     private:

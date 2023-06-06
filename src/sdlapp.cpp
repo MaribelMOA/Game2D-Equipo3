@@ -401,17 +401,7 @@ void SDLApp::on_frameupdate(double dt)
     SDL_RenderClear(get().render);
 
     //posicion del mouse
-    int mx = MouseOyente::get().getX();
-    int my = MouseOyente::get().getY();
-    std::string pm = "mouse("+std::to_string(mx)+","+std::to_string(my)+")";
-    Coordenadas cp = camara_principal->get_posicion_centro();
-    Coordenadas mcp = camara_principal->get_posicion_mundo();
-    std::string cm = "camara("+std::to_string(cp.x)+","+std::to_string(cp.y)+")";
-    std::string cmm = "camara("+std::to_string(mcp.x)+","+std::to_string(mcp.y)+")";
 
-    RenderTexto::get().render_texto(get().render,815,630,pm,100,30,SDL_Color{0,0,0,255});
-    RenderTexto::get().render_texto(get().render,815,580,cmm,100,30,SDL_Color{0,0,0,255});
-    RenderTexto::get().render_texto(get().render,815,530,cm,100,30,SDL_Color{0,0,0,255});
     //fps
     RenderTexto::get().render_texto(get().render,get().WIDTH-200,30,
         std::to_string((int)(dt/get().msfrecuencia))+" fps",
@@ -450,10 +440,10 @@ void SDLApp::on_frameupdate(double dt)
             enemigo->set_muerto(true);
             game_over=true;
              if(game_over==true){
-            RenderTexto::get().render_texto(get().render,350,450,"PRESS L TO RESTART THE GAME",350,70,SDL_Color{255,0,255,255});
+           // RenderTexto::get().render_texto(get().render,350,450,"PRESS L TO RESTART THE GAME",350,70,SDL_Color{255,0,255,255});
                 if(KeyOyente::get().estaPresionado(SDL_SCANCODE_L))
                 {
-                    restart();
+                  //  restart();
                 }
              }
         }
@@ -462,10 +452,10 @@ void SDLApp::on_frameupdate(double dt)
             enemigo->set_muerto(true);
             game_over=true;
              if(game_over==true){
-            RenderTexto::get().render_texto(get().render,400,350,"PRESS L TO RESTART THE GAME",350,70,SDL_Color{255,0,255,255});
+          //  RenderTexto::get().render_texto(get().render,400,350,"PRESS L TO RESTART THE GAME",350,70,SDL_Color{255,0,255,255});
                 if(KeyOyente::get().estaPresionado(SDL_SCANCODE_L))
                 {
-                    restart();
+                //    restart();
                 }
              }
         }
@@ -551,7 +541,14 @@ int SDLApp::on_correr()
 
 void SDLApp::restart()
 {
-   // get().on_limpiar();
+      SDL_DestroyRenderer(get().render);
+    SDL_FreeSurface(get().vntsurf);
+    SDL_DestroyWindow(get().vnt);
+    //plataformas.clear();
+    //delete ensamble;
+    //delete player;
+    //delete enemigo;
+    //SDL_Quit();
     get().on_init();
     get().on_correr();
 };

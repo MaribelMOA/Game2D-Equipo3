@@ -22,7 +22,7 @@ Camara::Camara(int x, int y, int w, int h, SDL_Renderer &view)
    // monstruo->set_posicion_mundo({x+w/2,y+h/2});
     viewport = &view;
     objensamble = new Pipeline(view);
-    velocidad =50.f;
+    velocidad =60.f;
     estado_actual = new EstadoCamaraMover({0,0});
     game_over = false;
     start = false;
@@ -51,7 +51,7 @@ Camara::Camara(int x, int y, int w, int h, Objeto * en,SDL_Renderer &view)
    // monstruo->set_posicion_mundo({x+w/2,y+h/2});
     viewport = &view;
     objensamble = new Pipeline(view);
-    velocidad =50.f;
+    velocidad =60.f;
     estado_actual = new EstadoCamaraMover({0,0});
     game_over = false;
     start = false;
