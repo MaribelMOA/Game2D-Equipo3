@@ -39,3 +39,8 @@ Consecuencias: El hielo se ha comenzado a derretir y los lugares se han empezado
 -># Bosque oscuro:#  Al sur del continente, la región lleno de monstruos de la que se conoce poco. Casi ningún arma sirve contra los monstruos de este bosque, hasta ahora, la única forma de debilitar a un monstruo es con la hierba “Shigmul”.
 
 Consecuencia: Los monstruos comienzan a infiltrar el resto de los reinos debido a que todos los poderes de los artefactos se encuentran en su hogar.
+
+#REFERENCIAS SPRITES
+https://www.pngwing.com/en/free-png-zybtx
+https://opengameart.org/
+
