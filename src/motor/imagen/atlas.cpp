@@ -122,11 +122,7 @@ void Atlas::generar_mapa(SDL_Renderer *r,int idflip,int notidobjfisicos)
                 id=MURO;
             }
            
-          
-           // objetos_fisicos.push_back(new Plataformas(j*t_width,i*t_height,t_width,t_height,{0,0,0,255}));
-            //(info.mapa_ids[i][j]==notidobjfisicos) ? false : true;
             objetos_fisicos.push_back(new Plataformas(tile,tiene_colision,id));
-            //guradar todos los tileinfo en un vector que no se repitan los ids
            
                
             

@@ -72,21 +72,14 @@ void Jugador::update(double dt)
             return;
         checar_colisiones();
         if(en_colision){
-            avatar->set_rellenocolor({255,0,0,255});
-            
+            avatar->set_rellenocolor({255,0,0,255}); 
         } 
         else
             avatar->set_rellenocolor(color);
-
         estado_actual->update(*this,dt);
-        
         //reset
         en_colision=false;
     }
-
-   
-
-
 };
 
 void Jugador::input_handle(KeyOyente& input,MouseOyente& mouse)
@@ -102,21 +95,16 @@ void Jugador::input_handle(KeyOyente& input,MouseOyente& mouse)
 
 void Jugador::checar_colisiones()
 {
-     // MotorFisico2D::get().sat_colision(*this,colisionables);
      if(colision_gemas==true)
      {
          gemas++;
-        // printf("gemas: %d\n",gemas);
          colision_gemas=false;
      }
-    if(colision_plantas==true)
-    {
+    if(colision_plantas==true) {
         plantas++;
-       // printf("plantas: %d\n",plantas);
         colision_plantas=false;
     }
-    
-    
+
 };
 
 Enemigo::Enemigo(float vida, int x, int y , SDL_Color c)

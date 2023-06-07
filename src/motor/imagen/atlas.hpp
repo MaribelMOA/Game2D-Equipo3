@@ -32,18 +32,14 @@ class Atlas
         void set_tilePlanta(TileInfo t){tilePlanta=t;};
         TileInfo get_tilePlanta() const{return tilePlanta;};
 
-
-
         void set_posicionesPiso(std::vector<Coordenadas> p){posicionesPiso=p;};
         std::vector<Coordenadas> get_posicionesPiso() const{return posicionesPiso;};
 
-       
     private:
          AtlasInfo info;
         std::vector<ObjetoEstatico*> objetos_fisicos;
         SDL_Texture *atlas_sheet;
         std::vector<Plataformas*> plataformas;
         TileInfo tilein,tileArtefacto,tileBlanco,tileGema,tilePlanta;
-        std::vector<Coordenadas> posicionesPiso;
-        
+        std::vector<Coordenadas> posicionesPiso;       
 };

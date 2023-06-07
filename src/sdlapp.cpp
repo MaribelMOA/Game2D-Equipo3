@@ -123,8 +123,7 @@ bool SDLApp::on_init()
    player->set_plantas(10);
 
     //Generar Enemigo
-   // enemigo=new Enemigo("assets/sprites/heroe/monster.png",80,1,posEnemigo.x,posEnemigo.y,100,87,100,100,{255,0,255,255},player);//80,1,300,300,100,87,100,100,{255,0,255,255}, player);
- enemigo=new Enemigo("assets/sprites/heroe/monster.png",50,1,posEnemigo.x,posEnemigo.y,100,87,100,100,{255,0,255,255});//80,1,300,300,100,87,100,100,{255,0,255,255}, player);
+    enemigo=new Enemigo("assets/sprites/heroe/monster.png",50,1,posEnemigo.x,posEnemigo.y,100,87,100,100,{255,0,255,255});//80,1,300,300,100,87,100,100,{255,0,255,255}, player);
     
   //Generar Guardian
    guardian=new Guardian("assets/sprites/heroe/buho3.png",15,1,posGuardian.x,posGuardian.y,60,50,100,100,{255,0,255,255});
@@ -201,9 +200,6 @@ bool SDLApp::on_init()
         objetos.push_back(plataformas[i]);
     }
   
-
-    
-    
     objetos.push_back(player);
     objetos.push_back(enemigo);
     objetos.push_back(guardian);
@@ -345,30 +341,21 @@ void SDLApp::on_fisicaupdate(double dt)
     }
 
     
-        //gems->update(&objetos);
     player->update(dt);
-  //  printf("Coordenadas player: (%d,%d)\n",player->get_posicion_mundo().x,player->get_posicion_mundo().y);
     enemigo->update(dt);
-    //imprimir esaod del enemgio
-    std::string estado=enemigo->get_strEstado();
-  // printf("EsTADO enemigo :%s\n",estado.c_str());
-   // printf("Coordenadas enemigo: (%d,%d)\n",enemigo->get_posicion_mundo().x,enemigo->get_posicion_mundo().y);
-  //  if(game_over==false){
-            MotorFisico2D::get().diag_ovelap_e(*player,*enemigo);
-        if(player->en_colision==true){
-            player->set_hp(player->get_hp()-enemigo->get_ataque());
-            
-            player->en_colision=false;
-        }
-    //  printf("HP-enemigo: %2.f\n",player->get_hp());
-        guardian->update(dt);
-        MotorFisico2D::get().diag_ovelap_g(*player,*guardian);
-        if(player->en_colision==true){
-            guardian->set_first_time(1);
-            player->set_hp(player->get_hp()-guardian->get_ataque());
-            player->en_colision=false;
-        }
-    //}
+    MotorFisico2D::get().diag_ovelap_e(*player,*enemigo);
+    if(player->en_colision==true){
+        player->set_hp(player->get_hp()-enemigo->get_ataque());
+        
+        player->en_colision=false;
+    }
+    guardian->update(dt);
+    MotorFisico2D::get().diag_ovelap_g(*player,*guardian);
+    if(player->en_colision==true){
+        guardian->set_first_time(1);
+        player->set_hp(player->get_hp()-guardian->get_ataque());
+        player->en_colision=false;
+    }
     
     if(player->get_hp()<=0){
        // printf("GAME OVER\n");
@@ -383,7 +370,6 @@ void SDLApp::on_fisicaupdate(double dt)
         enemigo->set_muerto(true);
     }
     
-
     
     /*CAMARA al final para actualizar la proyeción de los objetos*/
     camara_principal->input_handle(KeyOyente::get(),MouseOyente::get());
@@ -439,31 +425,16 @@ void SDLApp::on_frameupdate(double dt)
             RenderTexto::get().render_texto(get().render,400,350,"GAME OVER",150,70,SDL_Color{255,0,255,255});
             enemigo->set_muerto(true);
             game_over=true;
-             if(game_over==true){
-           // RenderTexto::get().render_texto(get().render,350,450,"PRESS L TO RESTART THE GAME",350,70,SDL_Color{255,0,255,255});
-                if(KeyOyente::get().estaPresionado(SDL_SCANCODE_L))
-                {
-                  //  restart();
-                }
-             }
         }
         if(player->get_colision_artefacto()==true){
             RenderTexto::get().render_texto(get().render,400,430,"YOU WIN",150,40,SDL_Color{255,0,255,255});
             enemigo->set_muerto(true);
-            game_over=true;
-             if(game_over==true){
-          //  RenderTexto::get().render_texto(get().render,400,350,"PRESS L TO RESTART THE GAME",350,70,SDL_Color{255,0,255,255});
-                if(KeyOyente::get().estaPresionado(SDL_SCANCODE_L))
-                {
-                //    restart();
-                }
-             }
+            game_over=true;  
         }
    }
     
     if(start==false){
         RenderTexto::get().render_texto(get().render,400,300,"PRESS L TO START",200,90,SDL_Color{255,255,0,255});
-        
     }
    
 
@@ -500,7 +471,6 @@ int SDLApp::on_correr()
 {
     //revisar que todo se inicializo bien
     if(get().on_init()==false){return -1;}
-
     SDL_Event eventos;
     double dt=0;
     double frecuencia = 1/get().maxFPS; // 1 frame a 60fps
@@ -517,12 +487,9 @@ int SDLApp::on_correr()
         {
             get().on_evento(&eventos);
         }
-
         //actualizamos si inicia o hay una diferencia de tiempo
-        
         get().on_fisicaupdate(dt);
         get().on_frameupdate(dt);
-
         //calculamos el tiempo del frame
         dt = (Tiempo::get_tiempo() - inicio)/frecuencia*1000;
         

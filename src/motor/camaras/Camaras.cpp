@@ -75,7 +75,6 @@ void Camara::lock_objeto(Objeto &obj)
     //Alumnos implementarla
     objeto_seguir = &obj;
     lock =1;
-    
 };
 
 void Camara::unluck_objeto()
@@ -84,7 +83,6 @@ void Camara::unluck_objeto()
     objeto_seguir = nullptr;
     lock=0;
 };
-
 void Camara::proyectar(std::vector<Objeto*> objetos)
 {
     //Alumnos implementarla 
@@ -97,7 +95,6 @@ void Camara::proyectar(std::vector<Objeto*> objetos)
         //DEBUGCOOR(posM)
     }
     //DEBUGPRINT("_____")
-    
 };
 
 void Camara::renderizar(std::vector<Objeto*>objetos)
@@ -122,10 +119,8 @@ void Camara::input_handle(KeyOyente &input, MouseOyente &mouse)
 {
     if(!estado_actual)
         return; //estado nulo al inicio
-    
     FSMCamara* estado = estado_actual->input_handle(*this,input,mouse);
-    if(estado)
-    {
+    if(estado) {
         estado_actual->on_salir(*this);
         delete estado_actual;
         estado_actual = estado;
@@ -138,7 +133,6 @@ void Camara::update()
     if(start==true) checar_pos_jugador();
     if(estado_actual)
         estado_actual->on_update(*this);
-   
 };
 
 void Camara::checar_pos_jugador(){
@@ -151,22 +145,11 @@ void Camara::checar_pos_jugador(){
     int posYObjeto = get_obj_lock()->get_posicion_mundo().y;
     if(posXObjeto<x1 || posXObjeto>x2 || posYObjeto<y1 || posYObjeto>y2)
     {
-        if(lock==0){
-           // lock_objeto(*jugador);
-        //cam.lock=1;
-            lock=1;
-           // printf("lock\n");
-        }
-       
+        if(lock==0){ lock=1; }
     }else{
         if(lock==1){
             jugador=objeto_seguir;
-            //printf("unlock\n");
-            //unluck_objeto();
             lock=0;
         }
-        
     }
-    
-
 }
